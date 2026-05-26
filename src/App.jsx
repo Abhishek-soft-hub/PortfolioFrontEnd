@@ -3,7 +3,6 @@ import heroImg from "./assets/hero.png";
 import "./App.css";
 
 function App() {
-
   const [showForm, setShowForm] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -16,7 +15,6 @@ function App() {
   // =========================
   // Handle Input Change
   // =========================
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -27,12 +25,10 @@ function App() {
   // =========================
   // Handle Submit
   // =========================
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-
       const response = await fetch(
         "https://portfolio-backend-new-em1q.onrender.com/enquiry/email",
         {
@@ -45,69 +41,58 @@ function App() {
       );
 
       if (response.ok) {
-
         alert("Enquiry Submitted Successfully!");
 
+        // ✅ FIXED: correct field name
         setFormData({
           name: "",
           email: "",
-          mobileNo: "",
+          mobileNumber: "",
           reason: "",
         });
 
         setShowForm(false);
-
       } else {
-
         const error = await response.text();
-
         alert(error);
       }
-
     } catch (error) {
-
       console.log(error);
-
       alert("Something went wrong");
     }
   };
 
+  // =========================
+  // Resume Download Handler (Better Approach)
+  // =========================
+  <button
+    onClick={() =>
+      window.open(
+        "https://portfolio-backend-new-em1q.onrender.com/download-resume",
+        "_blank"
+      )
+    }
+  >
+    Download Resume
+  </button>
+
   return (
     <>
       {/* Navbar */}
-
       <nav className="navbar">
-
         <h2>Abhishek.</h2>
 
         <ul>
-
-          <li>
-            <a href="#about">About</a>
-          </li>
-
-          <li>
-            <a href="#skills">Skills</a>
-          </li>
-
-          <li>
-            <a href="#projects">Projects</a>
-          </li>
-
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-
       </nav>
 
       {/* Hero */}
-
       <section className="hero-section">
-
         <div className="hero-left">
-
           <h3>Hello 👋</h3>
 
           <h1>
@@ -117,84 +102,55 @@ function App() {
           <h2>Java Full Stack Developer</h2>
 
           <p>
-            Entry-level Software Engineer with experience in
-            Java, Spring Boot, REST APIs, Microservices and
-            React development.
+            Entry-level Software Engineer with experience in Java, Spring Boot,
+            REST APIs, Microservices and React development.
           </p>
 
           <div className="buttons">
-
-            <a
-              href="https://your-backend.onrender.com/download-resume"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button>Download Resume</button>
-            </a>
+            {/* ✅ FIXED RESUME BUTTON */}
+            <button onClick={handleDownload}>
+              Download Resume
+            </button>
 
             <a href="#projects">
-              <button className="secondary">
-                View Projects
-              </button>
+              <button className="secondary">View Projects</button>
             </a>
-
           </div>
-
         </div>
 
         <div className="hero-right">
           <img src={heroImg} alt="Profile" />
         </div>
-
       </section>
 
       {/* About */}
-
       <section id="about">
-
         <h2>About Me</h2>
 
         <p className="about-text">
-
-          Passionate software engineer with hands-on
-          experience building scalable backend systems
-          using Java and Spring Boot.
-
-          Strong understanding of SDLC, OOP,
-          REST APIs, Microservices and secure
-          application development.
-
+          Passionate software engineer with hands-on experience building
+          scalable backend systems using Java and Spring Boot.
+          Strong understanding of SDLC, OOP, REST APIs, Microservices.
         </p>
-
       </section>
 
       {/* Skills */}
-
       <section id="skills">
-
         <h2>Technical Skills</h2>
 
         <div className="skill-category">
-
           <h3>Languages</h3>
-
           <div className="skills">
-
             <span>Java 17</span>
             <span>JavaScript</span>
             <span>HTML5</span>
             <span>CSS3</span>
-
           </div>
-
         </div>
 
         <div className="skill-category">
-
           <h3>Backend</h3>
-
           <div className="skills">
-
             <span>Spring Boot</span>
             <span>Spring MVC</span>
             <span>Spring Security</span>
@@ -202,158 +158,91 @@ function App() {
             <span>REST APIs</span>
             <span>Microservices</span>
             <span>Apache Kafka</span>
-
           </div>
-
         </div>
 
         <div className="skill-category">
-
           <h3>Database</h3>
-
           <div className="skills">
-
             <span>MySQL</span>
             <span>PostgreSQL</span>
             <span>JDBC</span>
-
           </div>
-
         </div>
 
         <div className="skill-category">
-
           <h3>Tools</h3>
-
           <div className="skills">
-
             <span>Git</span>
             <span>GitHub</span>
             <span>Maven</span>
             <span>Jenkins</span>
             <span>Postman</span>
             <span>VS Code</span>
-
           </div>
-
         </div>
 
         <div className="skill-category">
-
           <h3>Concepts</h3>
-
           <div className="skills">
-
             <span>OOP</span>
             <span>SOLID</span>
             <span>JWT</span>
             <span>Agile</span>
             <span>Multithreading</span>
             <span>Collections</span>
-
           </div>
-
         </div>
-
       </section>
 
       {/* Projects */}
-
       <section id="projects">
-
         <h2>Projects</h2>
 
         <div className="project-container">
-
           <div className="card">
-
-            <h3>
-              Academic Resource Management Platform
-            </h3>
-
+            <h3>Academic Resource Management Platform</h3>
             <p>
-              Student Management System built using
-              Spring Boot and React with JWT based
-              authentication and role management.
+              Student Management System built using Spring Boot and React with
+              JWT authentication and role management.
             </p>
-
           </div>
 
           <div className="card">
-
-            <h3>
-              Data Workflow Automation Engine
-            </h3>
-
+            <h3>Data Workflow Automation Engine</h3>
             <p>
-              Workflow engine for asynchronous
-              job execution and data processing.
+              Workflow engine for asynchronous job execution and data processing.
             </p>
-
           </div>
-
         </div>
-
       </section>
 
       {/* Experience */}
-
       <section id="experience">
-
         <h2>Experience</h2>
 
         <div className="experience-card">
+          <h3>Software Engineer Intern</h3>
+          <h4>Webforge Technologies</h4>
 
-          <h3>
-            Software Engineer Intern
-          </h3>
-
-          <h4>
-            Webforge Technologies
-          </h4>
-
-          <p className="date">
-            Jun 2025 - Nov 2025
-          </p>
+          <p className="date">Jun 2025 - Nov 2025</p>
 
           <ul>
-
-            <li>
-              Developed and maintained RESTful APIs using Java and Spring Boot.
-            </li>
-
-            <li>
-              Implemented exception handling and debugging.
-            </li>
-
-            <li>
-              Worked in Agile methodology and sprint planning.
-            </li>
-
-            <li>
-              Improved application performance through debugging and optimization.
-            </li>
-
-            <li>
-              Collaborated with teams to build scalable enterprise solutions.
-            </li>
-
+            <li>Developed REST APIs using Java and Spring Boot.</li>
+            <li>Implemented exception handling and debugging.</li>
+            <li>Worked in Agile methodology.</li>
+            <li>Improved performance through optimization.</li>
+            <li>Collaborated with teams for scalable systems.</li>
           </ul>
-
         </div>
-
       </section>
 
       {/* Contact */}
-
       <section id="contact">
-
         <h2>Contact</h2>
 
         <p>Email: abhishekjadhav.official2025@gmail.com</p>
-
         <p>Phone: +91 7218589202</p>
-
         <p>GitHub: github.com/Abhishek-soft-hub</p>
 
         <button
@@ -363,16 +252,13 @@ function App() {
           Enquiry
         </button>
 
+        {/* Popup Form */}
         {showForm && (
-
           <div className="popup-overlay">
-
             <div className="popup-form">
-
               <h3>Enquiry Form</h3>
 
               <form onSubmit={handleSubmit}>
-
                 <input
                   type="text"
                   name="name"
@@ -409,10 +295,7 @@ function App() {
                 />
 
                 <div className="popup-buttons">
-
-                  <button type="submit">
-                    Submit
-                  </button>
+                  <button type="submit">Submit</button>
 
                   <button
                     type="button"
@@ -421,26 +304,15 @@ function App() {
                   >
                     Cancel
                   </button>
-
                 </div>
-
               </form>
-
             </div>
-
           </div>
         )}
-
       </section>
 
       {/* Footer */}
-
-      <footer>
-
-        © 2026 Abhishek Jadhav
-
-      </footer>
-
+      <footer>© 2026 Abhishek Jadhav</footer>
     </>
   );
 }
