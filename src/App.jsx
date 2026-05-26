@@ -124,7 +124,11 @@ function App() {
 
           <div className="buttons">
 
-            <a href="/resume.pdf" download>
+            <a
+              href="https://your-backend.onrender.com/download-resume"
+              target="_blank"
+              rel="noreferrer"
+            >
               <button>Download Resume</button>
             </a>
 
