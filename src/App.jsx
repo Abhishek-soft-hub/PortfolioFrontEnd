@@ -23,7 +23,7 @@ function App() {
   };
 
   // =========================
-  // Handle Submit
+  // Submit Form
   // =========================
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +43,6 @@ function App() {
       if (response.ok) {
         alert("Enquiry Submitted Successfully!");
 
-        // ✅ FIXED: correct field name
         setFormData({
           name: "",
           email: "",
@@ -63,22 +62,18 @@ function App() {
   };
 
   // =========================
-  // Resume Download Handler (Better Approach)
+  // Resume Download (FIXED - NO ERROR)
   // =========================
-  <button
-    onClick={() =>
-      window.open(
-        "https://portfolio-backend-new-em1q.onrender.com/download-resume",
-        "_blank"
-      )
-    }
-  >
-    Download Resume
-  </button>
+  const handleDownload = () => {
+    window.open(
+      "https://portfolio-backend-new-em1q.onrender.com/download-resume",
+      "_blank"
+    );
+  };
 
   return (
     <>
-      {/* Navbar */}
+      {/* NAVBAR */}
       <nav className="navbar">
         <h2>Abhishek.</h2>
 
@@ -90,7 +85,7 @@ function App() {
         </ul>
       </nav>
 
-      {/* Hero */}
+      {/* HERO SECTION */}
       <section className="hero-section">
         <div className="hero-left">
           <h3>Hello 👋</h3>
@@ -107,7 +102,8 @@ function App() {
           </p>
 
           <div className="buttons">
-            {/* ✅ FIXED RESUME BUTTON */}
+
+            {/* ✅ RESUME DOWNLOAD BUTTON (FIXED) */}
             <button onClick={handleDownload}>
               Download Resume
             </button>
@@ -115,6 +111,7 @@ function App() {
             <a href="#projects">
               <button className="secondary">View Projects</button>
             </a>
+
           </div>
         </div>
 
@@ -123,136 +120,59 @@ function App() {
         </div>
       </section>
 
-      {/* About */}
+      {/* ABOUT */}
       <section id="about">
         <h2>About Me</h2>
-
-        <p className="about-text">
-          Passionate software engineer with hands-on experience building
-          scalable backend systems using Java and Spring Boot.
-          Strong understanding of SDLC, OOP, REST APIs, Microservices.
+        <p>
+          Passionate software engineer with experience in Java, Spring Boot,
+          REST APIs, and Microservices.
         </p>
       </section>
 
-      {/* Skills */}
+      {/* SKILLS */}
       <section id="skills">
         <h2>Technical Skills</h2>
 
-        <div className="skill-category">
-          <h3>Languages</h3>
-          <div className="skills">
-            <span>Java 17</span>
-            <span>JavaScript</span>
-            <span>HTML5</span>
-            <span>CSS3</span>
-          </div>
-        </div>
-
-        <div className="skill-category">
-          <h3>Backend</h3>
-          <div className="skills">
-            <span>Spring Boot</span>
-            <span>Spring MVC</span>
-            <span>Spring Security</span>
-            <span>Hibernate</span>
-            <span>REST APIs</span>
-            <span>Microservices</span>
-            <span>Apache Kafka</span>
-          </div>
-        </div>
-
-        <div className="skill-category">
-          <h3>Database</h3>
-          <div className="skills">
-            <span>MySQL</span>
-            <span>PostgreSQL</span>
-            <span>JDBC</span>
-          </div>
-        </div>
-
-        <div className="skill-category">
-          <h3>Tools</h3>
-          <div className="skills">
-            <span>Git</span>
-            <span>GitHub</span>
-            <span>Maven</span>
-            <span>Jenkins</span>
-            <span>Postman</span>
-            <span>VS Code</span>
-          </div>
-        </div>
-
-        <div className="skill-category">
-          <h3>Concepts</h3>
-          <div className="skills">
-            <span>OOP</span>
-            <span>SOLID</span>
-            <span>JWT</span>
-            <span>Agile</span>
-            <span>Multithreading</span>
-            <span>Collections</span>
-          </div>
+        <div className="skills">
+          <span>Java</span>
+          <span>Spring Boot</span>
+          <span>React</span>
+          <span>MySQL</span>
         </div>
       </section>
 
-      {/* Projects */}
+      {/* PROJECTS */}
       <section id="projects">
         <h2>Projects</h2>
 
-        <div className="project-container">
-          <div className="card">
-            <h3>Academic Resource Management Platform</h3>
-            <p>
-              Student Management System built using Spring Boot and React with
-              JWT authentication and role management.
-            </p>
-          </div>
-
-          <div className="card">
-            <h3>Data Workflow Automation Engine</h3>
-            <p>
-              Workflow engine for asynchronous job execution and data processing.
-            </p>
-          </div>
+        <div className="card">
+          <h3>Academic Management System</h3>
+          <p>Spring Boot + React project with JWT authentication.</p>
         </div>
       </section>
 
-      {/* Experience */}
+      {/* EXPERIENCE */}
       <section id="experience">
         <h2>Experience</h2>
 
-        <div className="experience-card">
+        <div className="card">
           <h3>Software Engineer Intern</h3>
-          <h4>Webforge Technologies</h4>
-
-          <p className="date">Jun 2025 - Nov 2025</p>
-
-          <ul>
-            <li>Developed REST APIs using Java and Spring Boot.</li>
-            <li>Implemented exception handling and debugging.</li>
-            <li>Worked in Agile methodology.</li>
-            <li>Improved performance through optimization.</li>
-            <li>Collaborated with teams for scalable systems.</li>
-          </ul>
+          <p>Worked on REST APIs, debugging, and backend development.</p>
         </div>
       </section>
 
-      {/* Contact */}
+      {/* CONTACT */}
       <section id="contact">
         <h2>Contact</h2>
 
         <p>Email: abhishekjadhav.official2025@gmail.com</p>
-        <p>Phone: +91 7218589202</p>
-        <p>GitHub: github.com/Abhishek-soft-hub</p>
+        <p>Phone: 7218589202</p>
 
-        <button
-          className="enquiry-btn"
-          onClick={() => setShowForm(true)}
-        >
+        <button onClick={() => setShowForm(true)}>
           Enquiry
         </button>
 
-        {/* Popup Form */}
+        {/* POPUP FORM */}
         {showForm && (
           <div className="popup-overlay">
             <div className="popup-form">
@@ -262,7 +182,7 @@ function App() {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Enter Name"
+                  placeholder="Name"
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -271,7 +191,7 @@ function App() {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Enter Email"
+                  placeholder="Email"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -280,7 +200,7 @@ function App() {
                 <input
                   type="text"
                   name="mobileNumber"
-                  placeholder="Enter Mobile Number"
+                  placeholder="Mobile Number"
                   value={formData.mobileNumber}
                   onChange={handleChange}
                   required
@@ -288,7 +208,7 @@ function App() {
 
                 <textarea
                   name="reason"
-                  placeholder="Reason For Enquiry"
+                  placeholder="Reason"
                   value={formData.reason}
                   onChange={handleChange}
                   required
@@ -299,7 +219,6 @@ function App() {
 
                   <button
                     type="button"
-                    className="cancel-btn"
                     onClick={() => setShowForm(false)}
                   >
                     Cancel
@@ -311,8 +230,10 @@ function App() {
         )}
       </section>
 
-      {/* Footer */}
-      <footer>© 2026 Abhishek Jadhav</footer>
+      {/* FOOTER */}
+      <footer>
+        © 2026 Abhishek Jadhav
+      </footer>
     </>
   );
 }
