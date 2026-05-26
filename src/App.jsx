@@ -34,7 +34,7 @@ function App() {
     try {
 
       const response = await fetch(
-        "https://portfolio-backend-new-em1q.onrender.com",
+        "https://portfolio-backend-new-em1q.onrender.com/enquiry/email",
         {
           method: "POST",
           headers: {
