@@ -9,7 +9,7 @@ function App() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    mobileNo: "",
+    mobileNumber: "",
     reason: "",
   });
 
@@ -389,9 +389,9 @@ function App() {
 
                 <input
                   type="text"
-                  name="mobileNo"
+                  name="mobileNumber"
                   placeholder="Enter Mobile Number"
-                  value={formData.mobileNo}
+                  value={formData.mobileNumber}
                   onChange={handleChange}
                   required
                 />
